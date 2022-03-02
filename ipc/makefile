@@ -30,4 +30,5 @@ socket-cli-srv: socket_cli_srv.cc
 
 # Clean up
 clean:
+	rm -r  *.dSYM
 	$(RM) fork-pipe fifo-manager socket-cli-srv

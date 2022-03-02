@@ -21,12 +21,19 @@ class UnixDomainSocket {
     socket_path_ = std::string(socket_path);  // std::string manages char *
 
     sock_addr_ = {};  // init struct (replaces memset)
+    // socket address struct (C - struct is an aggregate data class with no methods)
+    // bytes of it are in order in the contiguous data block
+    // C: memset
+
     sock_addr_.sun_family = AF_UNIX;  // set to Unix domain socket (e.g. instead
                                       //   of internet domain socket)
     // leaving leading null char sets abstract socket
     strncpy(sock_addr_.sun_path + 1,  // use strncpy to limit copy for
             socket_path,              //   portability
             sizeof(sock_addr_.sun_path) - 2);  // -2 for leading/trailing \0s
+            // \0 has a null socket s
+           // strncpy is a pointer to the first character of a character string to copy in to
+           // try prepending a \0 to the beginning of the 
   }
 
  protected:
