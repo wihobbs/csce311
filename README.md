@@ -1,5 +1,8 @@
 # csce311
 
+## multiproc/multiproc.cc
+- Thought it'd be nice to run lecture 4 pg 25 on my machine, so I typed it out and put it here.
+
 ## ipc/socket_cli_srv.cc
 - File can be made with **make socket-cli-srv** from the containing directory
 - Run server in terminal with **./socket-cli-srv server** and it will block waiting for client connect
