@@ -82,7 +82,7 @@ class DomainSocketServer : public UnixDomainSocket {
     }
 
     // (3) Listen for connections from clients
-    size_t kMax_client_conns = 5;
+    size_t kMax_client_conns = 5; // This will need to be changed to the number of cores
     success = listen(sock_fd, kMax_client_conns);
     if (success < 0) {
       std::cerr << strerror(errno) << std::endl;
@@ -90,6 +90,9 @@ class DomainSocketServer : public UnixDomainSocket {
     }
 
     const size_t kRead_buffer_size = 32;
+    // vector iterator
+    // std::unique_ptr<char> read_buffer;
+    
     char read_buffer[kRead_buffer_size];
     int bytes_read;
     while (true) {
